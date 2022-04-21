@@ -1,34 +1,32 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import QuestionForm from "./components/QuestionForm";
 
 function App() {
-  //state
-  const [questions, setQuestions] = useState([]);
-
-  const createNewQuestions = () => {};
+  const [start, setStart] = useState(false);
 
   return (
     <main>
-      {questions.length > 0 ? (
-        {
-          /* <Split sizes={[30, 70]} direction="horizontal" className="split">
-          <Sidebar
-            notes={notes}
-            currentNote={findCurrentNote()}
-            setCurrentNoteId={setCurrentNoteId}
-            newNote={createNewNote}
-            deleteNote={deleteNote}
-          />
-          {currentNoteId && notes.length > 0 && (
-            <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
-          )}
-        </Split> */
-        }
+      {start ? (
+        <QuestionForm />
       ) : (
         <div className="no-notes">
           <h1>Quizzical</h1>
           <h4>Let's have fun with small quizz!</h4>
-          <button className="first-note" onClick={createNewQuestions}>
+          {/* <label htmlFor="number">If You want to play with more than 10 questins, select number of questions please!</label>
+          <input 
+                    type="number"
+                    id="number"
+                    name="employment"
+                    value="unemployed"
+                    onChange={handleChange}
+                /> */}
+          <button
+            className="first-note"
+            onClick={() => {
+              setStart((prevStart) => !prevStart);
+            }}
+          >
             Start quizz now!
           </button>
         </div>
